@@ -1,0 +1,41 @@
+import com.onemillionworlds.DeepTokenifyFile
+
+plugins {
+    id 'java'
+}
+
+group = 'com.onemillionworlds'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+def jme3 = [v:'3.6.1-stable', g:'org.jmonkeyengine']
+
+sourceSets.main.resources.srcDirs += 'src/main/generated/resources'
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation "${jme3.g}:jme3-core:${jme3.v}"
+    implementation "${jme3.g}:jme3-lwjgl3:${jme3.v}"
+    implementation "${jme3.g}:jme3-desktop:${jme3.v}"
+
+    implementation "com.onemillionworlds:deeptokens:1.0.4"
+}
+
+tasks.register("generateWeatherModel", DeepTokenifyFile){
+    inputFile = file('src/main/resources/weatherIcon.png')
+    outputFile = file('src/main/generated/resources/Models/weatherIcon.j3o')
+    tokenWidth = 5f
+    tokenDepth = 0.5f
+}
+
+test {
+    useJUnitPlatform()
+}
+
+processResources.dependsOn(generateWeatherModel)
