@@ -1,3 +1,4 @@
+import com.onemillionworlds.DeepTokenifyDirectory
 import com.onemillionworlds.DeepTokenifyFile
 
 plugins {
@@ -27,9 +28,9 @@ dependencies {
     implementation "com.onemillionworlds:deeptokens:1.0.4"
 }
 
-tasks.register("generateWeatherModel", DeepTokenifyFile){
-    inputFile = file('src/main/resources/weatherIcon.png')
-    outputFile = file('src/main/generated/resources/Models/weatherIcon.j3o')
+tasks.register("generateWeatherModel", DeepTokenifyDirectory){
+    inputDirectory = file('src/main/resources/examples')
+    outputDirectory= file('src/main/generated/resources/Models/examples')
     tokenWidth = 5f
     tokenDepth = 0.5f
 }
