@@ -37,13 +37,15 @@ public class DeepTokenifyDirectory extends DefaultTask{
     public void processFile() {
         DeepTokenBuilder builder = new DeepTokenBuilder(tokenWidth, tokenDepth);
         builder.setEdgeSimplificationEpsilon(0.75);
+        builder.setDirtyEdgeReduction(4);
+        builder.setStrictMode(true);
         AssetManager assetManager = new DesktopAssetManager(true);
         BinaryExporter exporter = BinaryExporter.getInstance();
 
         for( File fileToProcess : inputDirectory.listFiles()){
             if (fileToProcess.getName().endsWith(".png")){
                 try {
-
+                    System.out.println("Triangulating " + fileToProcess.getName());
                     BufferedImage image = ImageIO.read(fileToProcess);
 
                     Geometry result = builder.bufferedImageToLitGeometry(image, assetManager);

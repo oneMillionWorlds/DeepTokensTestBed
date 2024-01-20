@@ -27,7 +27,7 @@ dependencies {
 
 }
 
-tasks.register("generateWeatherModel", DeepTokenifyDirectory){
+tasks.register("generateModels", DeepTokenifyDirectory){
     inputDirectory = file('src/main/resources/examples')
     outputDirectory= file('src/main/generated/resources/Models/examples')
     tokenWidth = 5f
@@ -38,4 +38,4 @@ test {
     useJUnitPlatform()
 }
 
-processResources.dependsOn(generateWeatherModel)
+processResources.dependsOn(generateModels)

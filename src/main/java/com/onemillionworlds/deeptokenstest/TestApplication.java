@@ -22,7 +22,8 @@ public class TestApplication extends SimpleApplication{
             "/Models/examples/weatherIcon.j3o",
             "/Models/examples/problematicTripleHole.j3o", //because the two holes both branch off the same point this one tends to go wrong
             "/Models/examples/arch.j3o",
-            "/Models/examples/difficultHolesAndIslands.j3o"
+            "/Models/examples/difficultHolesAndIslands.j3o",
+            "/Models/examples/dirtyEdge.j3o"  //this one has antialiasing on its edges (which earlier versions didn't like)
     );
 
 

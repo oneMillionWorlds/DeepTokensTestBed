@@ -35,6 +35,8 @@ public class DeepTokenifyFile extends DefaultTask{
         DeepTokenBuilder builder = new DeepTokenBuilder(tokenWidth, tokenDepth);
         builder.setEdgeSimplificationEpsilon(0.75);
         builder.setMinimumSharpAngle((float)Math.toRadians(60));
+        builder.setDirtyEdgeReduction(4);
+        builder.setStrictMode(true);
         AssetManager assetManager = new DesktopAssetManager(true);
         BinaryExporter exporter = BinaryExporter.getInstance();
 
